@@ -1,7 +1,7 @@
 import type { IncomingHttpHeaders } from "node:http";
 import { Readable } from "node:stream";
 import {
-	ApolloServer,
+	type ApolloServer,
 	type ApolloServerPlugin,
 	type BaseContext,
 	type GraphQLServerListener,
@@ -25,11 +25,7 @@ import type {
 export const fastifyApollo = <Context extends BaseContext = BaseContext>(
 	apollo: ApolloServer<Context>,
 ): FastifyPluginAsync => {
-	const apolloServerProvided = (value: unknown): boolean =>
-		value instanceof ApolloServer;
-
-	if (!apolloServerProvided(apollo))
-		throw new Error("Apollo server instance is not provided");
+	if (!apollo) throw new Error("Apollo server instance is not provided");
 
 	apollo.assertStarted("fastifyApollo()");
 
