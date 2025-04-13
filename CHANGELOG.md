@@ -1,5 +1,11 @@
 # @labdigital/apollo-server-integration-fastify
 
+## 0.0.3
+
+### Patch Changes
+
+- 574dc4d: Fix validation logic to check if the apollo server was passed to the plugin
+
 ## 0.0.2
 
 ### Patch Changes
